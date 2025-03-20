@@ -1,0 +1,103 @@
+---
+const PROJECTS = [
+    {
+        title: 'Fighting game',
+        description: 'Juego web de peleas 2D para dos jugadores simultáneos en una misma plataforma. Se utiliza JavaScript y HTML Canvas.',
+        github: 'https://github.com/Soriano00/fighting-game',
+        video: '/assets/fighting-game-demo.webm',
+        tags: ['HTML', 'JavaScript']
+    },   
+    {
+        title: 'Connect4',
+        description: 'Aplicación visual que simula el juego de 4 en raya para dos jugadores en navegador web. Centrada especialmente en lo visual. Gran detalle en animaciones texturas y reflejos.',
+        github: 'https://github.com/Soriano00/Connect4',
+        video: '/assets/Connect-4-demo.gif',
+        tags: ['HTML', 'JavaScript', 'CSS', 'ThreeJS', 'TweenJS']
+    },
+    {
+        title: 'ToDo MVC',
+        description: `Applicación para la creación de una lista todo de notas. 
+        Se pueden añadir, modificar y eliminar notas o tareas. A su vez dichas tareas pueden estar activas, sin empezar o finalizadas.`,
+        github: 'https://github.com/Soriano00/todomvc',
+        video: '/assets/todo-demo.webm',
+        tags: ['HTML', 'CSS', 'TypeScript', 'Angular']
+    },  
+    {
+        title: 'Dinamometría deportiva y Machine Learning',
+        description: `Proyecto de fin de Grado. Diseño y creación de una base de datos para el almacenamiento de información. 
+        Creación de una API para introducir la información en la base de datos de manera automática con archivos. Diseño e implementación 
+        de un algoritmo de Machine Learning que sea capaz de predecir información de nuevos archivos de datos que no esten incluidos en la base de datos`,
+        github: 'https://github.com/Soriano00/TFG',
+        image: '/assets/demo-TFG.png',
+        tags: ['SQL', 'FastAPI', 'Python', 'Jupyter', 'JavaScript']
+    }, 
+    {
+        title: 'Proyecto Pagina Web Dinamica',
+        description: `Creación de una página web dinámica. Creamos un frontend utilizando HTML y CSS y para el backend utilizamos Docker, PHP, SQL y JavaScript.
+        Funcionalidades básicas de una página web como crear usuario o login, modificar información del perfil, entrar a las noticias de la página y comentar en ellas.
+        A su vez un usuario puede ser admin y tiene permisos especiales como eliminar usuarios, crear o eliminar noticias, eliminar comentarios o modificar 
+        privilegios de otros usuarios.`,
+        github: 'https://github.com/Soriano00/SIBW2',
+        image: '/assets/demo-SIBW.png',
+        tags: ['SQL', 'HTML', 'CSS', 'Docker', 'PHP', 'JavaScript']
+    }, 
+]
+---
+
+{
+    PROJECTS.map(({title, description, tags, video, image, github }) => (
+        <article class="mb-8 p-4 bg-white/5 rounded-2xl shadow-lg overflow-hidden">
+
+            <div class="p-4">
+                <h3 class="text-2xl font-semibold text-red-100/70 mb-2">
+                    {title}
+                </h3>
+
+                <p class="text-lg mb-4 text-pretty">
+                    {description}
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                    {tags.map(tag => (
+                        <span class="px-3 py-1 rounded-full bg-white/10 text-white text-sm">
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+
+                {image ? (
+                    <img 
+                        class="w-full h-full object-cover rounded-t-2xl"
+                        src={image}
+                        alt={`${title} demo`} 
+                    />
+                ) : video ? (video.endsWith('.gif') ? (
+                    <img 
+                        class="w-full h-full object-cover rounded-t-2xl"
+                        src={video}
+                        alt={`${title} demo`} 
+                    />
+                ) : (
+                    <video
+                        class="w-full h-full object-cover"
+                        src={video}
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                    />
+                )) : null}
+
+                <a 
+                    href={github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-block px-4 py-2 mt-4 bg-white/10 text-white rounded-2xl hover:bg-white/20 transition"
+                >
+                    Ver en GitHub
+                </a>
+
+            </div>
+        </article>
+    ))
+}

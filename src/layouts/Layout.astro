@@ -1,3 +1,11 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import '../styles/global.css';
+import '@fontsource-variable/onest'
+---
+
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,18 +13,47 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Porfolio de Alex - Ingeniero Informático y Programador</title>
 	</head>
 	<body>
+		<div class="fixed inset-0 -z-10 w-full h-full 
+			[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+
+		<Header />
+
 		<slot />
+
+		<Footer />
 	</body>
+	
 </html>
 
-<style>
-	html,
+<style is:global>
+	:root {
+		color-scheme: dark;
+	}
+
+	html {
+		font-family: "Onest Variable", system-ui, sans-serif;
+		color: white; /* Esto sí cambia el color del texto por defecto */
+		scroll-behavior: smooth;
+	}
+
 	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+		background: #2a2a2a;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		overflow-x: hidden;
+	}
+
+	@media (prefers-reduced-motion: reduce){
+		html{
+			scroll-behavior: auto;
+		}
+	}
+	header{
+		margin: 0 auto;
 	}
 </style>
+
